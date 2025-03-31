@@ -1,0 +1,28 @@
+services:
+  db:
+    image: postgres:15
+    container_name: gsi360_db
+    restart: always
+    environment:
+      POSTGRES_DB: gsi360_teste
+      POSTGRES_USER: app_user
+      POSTGRES_PASSWORD: Senhaforte123!
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  web:
+    build: .
+    container_name: gsi360-backend
+    volumes:
+      - .:/app
+    ports:
+      - "8001:8001"
+    env_file:
+      - .env.docker
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
