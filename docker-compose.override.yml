@@ -1,0 +1,21 @@
+services:
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    restart: always
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+      PGADMIN_UID: 5050
+      PGADMIN_GID: 5050
+    volumes:
+      - pgadmin-storage:/var/lib/pgadmin
+      - ./servers.json:/pgadmin4/servers.json
+    depends_on:
+      - db
+
+volumes:
+  pgadmin-storage:

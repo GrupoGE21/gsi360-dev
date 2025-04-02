@@ -19,35 +19,55 @@ try:
 except:
     pass
 
-SHARED_APPS = [
-    'django_tenants',
-    'apps.users',
-    'django.contrib.contenttypes',
-    'django.contrib.auth',
-    'django.contrib.sessions',
+INSTALLED_APPS = [
     'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.tenants',
-]
 
-TENANT_APPS = [
-    'django.contrib.contenttypes',
-    'django.contrib.auth',
-    'django.contrib.sessions',
-    'django.contrib.admin',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
     'rest_framework',
+
     'apps.authentication',
     'apps.users',
     'apps.core',
+    'apps.companies',
+    'apps.tenants',
 ]
 
-INSTALLED_APPS = SHARED_APPS + [app for app in TENANT_APPS if app not in SHARED_APPS]
+
+# SHARED_APPS = [
+#     # 'django_tenants',
+#     'apps.users',
+#     'django.contrib.contenttypes',
+#     'django.contrib.auth',
+#     'django.contrib.sessions',
+#     'django.contrib.admin',
+#     'django.contrib.messages',
+#     'django.contrib.staticfiles',
+#     'apps.tenants',
+#     'apps.companies',
+# ]
+#
+# TENANT_APPS = [
+#     'django.contrib.contenttypes',
+#     'django.contrib.auth',
+#     'django.contrib.sessions',
+#     'django.contrib.admin',
+#     'django.contrib.messages',
+#     'django.contrib.staticfiles',
+#     'rest_framework',
+#     'apps.authentication',
+#     'apps.users',
+#     'apps.core',
+# ]
+
+# INSTALLED_APPS = SHARED_APPS + [app for app in TENANT_APPS if app not in SHARED_APPS]
 
 MIDDLEWARE = [
-    'apps.middleware.tenant_from_header.TenantFromHeaderMiddleware',
+    # 'apps.middleware.tenant_from_header.TenantFromHeaderMiddleware',
+    # 'apps.middleware.tenant_from_header.TenantFromRequestMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -58,15 +78,16 @@ MIDDLEWARE = [
 ]
 
 # Router de tenants
-DATABASE_ROUTERS = ('django_tenants.routers.TenantSyncRouter',)
+# DATABASE_ROUTERS = ('django_tenants.routers.TenantSyncRouter',)
 # Nome do modelo que representa o tenant (schema)
-TENANT_MODEL = "tenants.Company"
-TENANT_DOMAIN_MODEL = "tenants.Domain"
+# TENANT_MODEL = "tenants.TenantCompany"
+# TENANT_DOMAIN_MODEL = "tenants.Domain"
 
 # Configuração de banco de dados multi-tenant
 DATABASES = {
     'default': {
-        'ENGINE': 'django_tenants.postgresql_backend',
+        # 'ENGINE': 'django_tenants.postgresql_backend',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': env('POSTGRES_DB'),
         'USER': env('POSTGRES_USER'),
         'PASSWORD': env('POSTGRES_PASSWORD'),

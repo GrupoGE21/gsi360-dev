@@ -1,0 +1,14 @@
+{
+  "Servers": {
+    "gsi360-db": {
+      "Name": "gsi360-db",
+      "Group": "Servers",
+      "Host": "db",
+      "Port": 5432,
+      "MaintenanceDB": "gsi360_teste",
+      "Username": "app_user",
+      "SSLMode": "prefer",
+      "PassFile": "/pgpass"
+    }
+  }
+}
