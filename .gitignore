@@ -1,0 +1,69 @@
+# ============================
+# 🐍 Python
+# ============================
+*.py[cod]
+__pycache__/
+*.so
+*.pyd
+*.egg-info/
+.Python
+env/
+.venv/
+venv/
+
+# ============================
+# 🛠️ Django / Migrations
+# ============================
+*.sqlite3
+db.sqlite3
+*.log
+*.pot
+*.pyc
+apps/**/migrations/
+!apps/**/migrations/__init__.py
+
+# ============================
+# 🔐 Secrets / Variáveis de ambiente
+# ============================
+.env
+.env.*
+!.env.example
+
+# ============================
+# 🐳 Docker
+# ============================
+docker-compose.override.yml
+*.pid
+.dockerignore
+
+# ============================
+# 📦 VS Code / PyCharm / IDEs
+# ============================
+.idea/
+.vscode/
+*.iml
+
+# ============================
+# 🧪 Testes
+# ============================
+htmlcov/
+coverage.xml
+.tox/
+.nox/
+.pytest_cache/
+
+# ============================
+# 📦 Node / Front (caso tenha)
+# ============================
+node_modules/
+dist/
+build/
+
+# ============================
+# ⚙️ Sistema Operacional
+# ============================
+.DS_Store
+Thumbs.db
+
+
+z-experiments/
