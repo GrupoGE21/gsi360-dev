@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.companies.models import OperationalCompany, CompanyGroup
+from apps.companies.models import Company, CompanyGroup
 from apps.users.models import CustomUser
 
 
@@ -11,7 +11,7 @@ class CompanyGroupSerializer(serializers.ModelSerializer):
 
 class CompanySerializer(serializers.ModelSerializer):
     class Meta:
-        model = OperationalCompany
+        model = Company
         fields = ['id', 'name', 'group']
 
 
