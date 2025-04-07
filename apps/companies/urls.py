@@ -1,8 +1,11 @@
-from django.urls import path
-from apps.companies import views
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from apps.companies.views import Company, CompanyGroup, User
 
+router = DefaultRouter()
+router.register("company", Company)
+router.register("companygroup", CompanyGroup)
+router.register("user", User)
 urlpatterns = [
-    path('groups/', views.CompanyGroupListCreateView.as_view(), name='group-list-create'),
-    path('companies/', views.CompanyListCreateView.as_view(), name='company-list-create'),
-    path('users/', views.UserListCreateView.as_view(), name='user-list-create'),
+    path('', include(router.urls)),
 ]

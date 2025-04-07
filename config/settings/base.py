@@ -26,8 +26,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'rest_framework',
+    'drf_spectacular',
 
     'apps.authentication',
     'apps.users',
@@ -137,4 +137,11 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": (
         "rest_framework.permissions.IsAuthenticated",
     ),
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'API GSI360',
+    'DESCRIPTION': 'Documentação da API com OpenAPI/Swagger',
+    'SERVE_INCLUDE_SCHEMA': False,
 }
