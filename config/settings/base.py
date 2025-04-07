@@ -101,9 +101,10 @@ PUBLIC_SCHEMA_URLCONF = 'config.urls'
 
 STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LANGUAGE_CODE = 'pt-br'
 
 # Modelo customizado de usuário
-AUTH_USER_MODEL = "users.CustomUser"
+AUTH_USER_MODEL = "users.User"
 
 
 TEMPLATES = [

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from apps.companies.models import Company, CompanyGroup
-from apps.users.models import CustomUser
+from apps.users.models import User
 
 
 class CompanyGroupSerializer(serializers.ModelSerializer):
@@ -17,5 +17,5 @@ class CompanySerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = CustomUser
+        model = User
         fields = ['id', 'username', 'email', 'full_name']

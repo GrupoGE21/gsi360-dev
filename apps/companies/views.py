@@ -2,7 +2,7 @@ from rest_framework.viewsets import ModelViewSet
 
 from apps.companies.models import Company, CompanyGroup
 from apps.companies.serializers import CompanySerializer, CompanyGroupSerializer, UserSerializer
-from apps.users.models import CustomUser
+from apps.users.models import User
 
 
 class CompanyGroup(ModelViewSet):
@@ -16,5 +16,5 @@ class Company(ModelViewSet):
 
 
 class User(ModelViewSet):
-    queryset = CustomUser.objects.all()
+    queryset = User.objects.all()
     serializer_class = UserSerializer
