@@ -1,11 +1,15 @@
 import uuid
-from django.contrib.auth.models import AbstractUser, PermissionsMixin, UserManager
+from django.contrib.auth.models import AbstractUser, PermissionsMixin
 from django.db import models
+from django.utils import timezone
+
+from apps.core.utils import generate_incremental_code
 from apps.users.managers import UserManager
 
 
 class User(AbstractUser, PermissionsMixin):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    code = models.CharField(max_length=20, unique=True)
     first_name = models.CharField(max_length=255, blank=True)
     last_name = models.CharField(max_length=255, blank=True)
     email_professional = models.EmailField('E-mail da empresa',max_length=255, unique=True)
@@ -39,8 +43,13 @@ class User(AbstractUser, PermissionsMixin):
     spouse_or_children = models.CharField('Cônjuge e/ou filhos', max_length=250, blank=True, null=True)
     additional_info = models.CharField('Informações adicionais', max_length=250, blank=True, null=True)
     has_vacation = models.BooleanField('Tem férias?', default=True)
-    registration_date_at = models.DateTimeField('Usuário Registrado em', auto_now_add=True)
+    registration_date_at = models.DateTimeField('Usuário Registrado em', default=timezone.now)
     update_date_at = models.DateTimeField('Usuário Atualizado em', auto_now=True)
+
+    def save(self, *args, **kwargs):
+        if not self.code:
+            self.code = generate_incremental_code(User, 'registration_date_at')
+            super().save(*args, **kwargs)
 
     def __str__(self):
         return self.username
@@ -60,3 +69,4 @@ class User(AbstractUser, PermissionsMixin):
 
     class Meta:
         db_table = 'user'
+        verbose_name = 'Usuário'

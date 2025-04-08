@@ -1,18 +1,23 @@
 from django.contrib import admin
-from .models import Company, CompanyGroup, AccessGroup, AccessUser
+from .models import Company, CompanyGroup, AccessGroup, AccessUser, Department
+
 
 @admin.register(CompanyGroup)
 class CompanyGroupAdmin(admin.ModelAdmin):
-    list_display = ("name", "created_at", "updated_at")
-    list_display_links = ("name",)
+    readonly_fields = ("code",)
+    list_display = ("code", "name", "created_at", "updated_at")
+    list_display_links = ("code", "name",)
     search_fields = ("name",)
+    ordering = ("-code",)
     list_per_page = 50
 
 @admin.register(Company)
 class CompanyAdmin(admin.ModelAdmin):
-    list_display = ("name", "created_at", "updated_at")
-    list_display_links = ("name",)
+    readonly_fields = ("code",)
+    list_display = ("code", "name", "created_at", "updated_at")
+    list_display_links = ("code", "name",)
     search_fields = ("name",)
+    ordering = ("-code",)
     list_per_page = 50
 
 
@@ -29,4 +34,13 @@ class AccessUserAdmin(admin.ModelAdmin):
     # list_display = ("id", "user", "role")
     # list_display_links = ("id", "user", "role")
     # list_filter = ("role",)
+    list_per_page = 50
+
+@admin.register(Department)
+class DepartmentAdmin(admin.ModelAdmin):
+    readonly_fields = ("code",)
+    list_display = ("code", "name", "created_at", "updated_at")
+    list_display_links = ("code", "name",)
+    search_fields = ("name",)
+    ordering = ("-code",)
     list_per_page = 50

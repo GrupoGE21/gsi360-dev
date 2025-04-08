@@ -6,13 +6,13 @@ from apps.users.models import User
 class CompanyGroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = CompanyGroup
-        fields = ['id', 'name']
+        fields = ['name']
 
 
 class CompanySerializer(serializers.ModelSerializer):
     class Meta:
         model = Company
-        fields = ['id', 'name', 'group']
+        fields = ['name', 'group']
 
 
 class UserSerializer(serializers.ModelSerializer):

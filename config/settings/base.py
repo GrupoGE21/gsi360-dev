@@ -12,6 +12,8 @@ environ.Env.read_env(BASE_DIR / ".env")
 SECRET_KEY = env("SECRET_KEY", default="chave-insegura")
 DEBUG = env.bool("DEBUG", default=True)
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["*"])
+print("ALLOWED_HOSTS carregado:", ALLOWED_HOSTS)
+
 
 try:
     hostname = socket.gethostname()
