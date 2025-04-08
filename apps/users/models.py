@@ -1,8 +1,7 @@
 import uuid
-from django.contrib.auth.models import AbstractUser, PermissionsMixin
+from django.contrib.auth.models import AbstractUser, PermissionsMixin, Group
 from django.db import models
 from django.utils import timezone
-
 from apps.core.utils import generate_incremental_code
 from apps.users.managers import UserManager
 
@@ -12,6 +11,7 @@ class User(AbstractUser, PermissionsMixin):
     code = models.CharField(max_length=20, unique=True)
     first_name = models.CharField(max_length=255, blank=True)
     last_name = models.CharField(max_length=255, blank=True)
+    groups = models.ManyToManyField(Group, blank=True)
     email_professional = models.EmailField('E-mail da empresa',max_length=255, unique=True)
     email_personal = models.EmailField('E-mail pessoal',max_length=255, unique=True)
     birth_date = models.DateField('Data de nascimento', null=True, blank=True)

@@ -21,21 +21,6 @@ class CompanyAdmin(admin.ModelAdmin):
     list_per_page = 50
 
 
-@admin.register(AccessGroup)
-class AccessGroupAdmin(admin.ModelAdmin):
-    # list_display = ("id", "user", "role")
-    # list_display_links = ("id", "user", "role")
-    # list_filter = ("role",)
-    list_per_page = 50
-
-
-@admin.register(AccessUser)
-class AccessUserAdmin(admin.ModelAdmin):
-    # list_display = ("id", "user", "role")
-    # list_display_links = ("id", "user", "role")
-    # list_filter = ("role",)
-    list_per_page = 50
-
 @admin.register(Department)
 class DepartmentAdmin(admin.ModelAdmin):
     readonly_fields = ("code",)

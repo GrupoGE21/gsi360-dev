@@ -75,28 +75,3 @@ class Department(models.Model):
 
     def __str__(self):
         return self.name
-
-
-class AccessGroup(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='company_permissions')
-    company_set = models.ManyToManyField(Company, related_name="user_permissions")
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        app_label = 'companies'
-        db_table = 'access_group'
-        verbose_name = 'Grupo de permissão'
-        verbose_name_plural = 'Grupos de permissões'
-
-    def __str__(self):
-        return f"{self.user.username} @ permissions"
-
-class AccessUser(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    groups = models.ManyToManyField(AccessGroup, related_name="user_permissions")
-
-    class Meta:
-        app_label = 'companies'
-        db_table = 'access_user'
-        verbose_name = 'Permissão do usuário'
-        verbose_name_plural = 'Permissões dos usuários'
