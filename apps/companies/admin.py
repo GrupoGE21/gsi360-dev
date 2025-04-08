@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Company, CompanyGroup, AccessGroup, AccessUser, Department
+from .models import Company, CompanyGroup, Department
 
 
 @admin.register(CompanyGroup)
