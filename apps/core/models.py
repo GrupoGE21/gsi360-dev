@@ -9,6 +9,12 @@ class EmploymentType(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        app_label = 'core'
+        db_table = 'employment_type'
+        verbose_name = "Tipo de contratação"
+        verbose_name_plural = "Tipos de contratação"
+
 
 # Tipos de custos dos profissionais
 class EmployeeCostType(models.Model):
@@ -19,3 +25,14 @@ class EmployeeCostType(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        app_label = 'core'
+        db_table = 'employee_cost_type'
+        verbose_name = 'Tipo de custo do profissional'
+        verbose_name_plural = 'Tipos de custos do profissional'
+
+
+# cadcliente - cliente
+# cadclientecnpj
+# cadagente - profissionais do cliente
