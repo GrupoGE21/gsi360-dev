@@ -31,8 +31,3 @@ class EmployeeCostType(models.Model):
         db_table = 'employee_cost_type'
         verbose_name = 'Tipo de custo do profissional'
         verbose_name_plural = 'Tipos de custos do profissional'
-
-
-# cadcliente - cliente
-# cadclientecnpj
-# cadagente - profissionais do cliente
