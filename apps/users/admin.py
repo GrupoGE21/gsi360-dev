@@ -19,7 +19,7 @@ class UserAdmin(admin.ModelAdmin):
             'fields': ('cep', 'address', 'address_number', 'address_complement', 'neighborhood', 'city')
         }),
         ("Informações Profissionais", {
-            'fields': ('job_title', 'hierarchy_level', 'admission_date', 'resignation_date', 'is_clt', 'is_pj', 'work_schedule_type', 'academic_background')
+            'fields': ('job_title', 'hierarchy_level', 'admission_date', 'leader', 'work_schedule_type', 'employment_type', 'academic_background', 'resignation_date')
         }),
         ("Recursos Humanos", {
             'fields': ('uses_timesheet', 'has_time_bank', 'has_vacation', 'spouse_or_children', 'additional_info')
