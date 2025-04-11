@@ -32,7 +32,7 @@ class Company(models.Model):
     code = models.CharField(max_length=10, unique=True)
     group = models.ForeignKey(CompanyGroup, on_delete=models.CASCADE, related_name="companies")
     name = models.CharField(max_length=255)
-    cnpj = models.CharField(max_length=18, unique=True)
+    cnpj = models.CharField(max_length=14, unique=True)
     description = models.TextField(blank=True, null=True)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)

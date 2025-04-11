@@ -81,7 +81,7 @@ class ClientProfessional(models.Model):
     name = models.CharField('Nome', max_length=100)
     client = models.ForeignKey('Client', on_delete=models.CASCADE, related_name="clients_professionals")
     phone = models.CharField('Telefone', max_length=20, blank=True, null=True)
-    celphone = models.CharField('Celular', max_length=20, blank=True, null=True)
+    cellphone = models.CharField('Celular', max_length=20, blank=True, null=True)
     email = models.CharField('Email', max_length=250, blank=True, null=True)
     position = models.CharField('Cargo', max_length=100, blank=True, null=True)
     sector = models.CharField('Setor', max_length=100, blank=True, null=True)
