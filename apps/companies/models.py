@@ -1,10 +1,9 @@
 import uuid
 from django.db import models
-
 from apps.core.utils import generate_incremental_code
 from apps.users.models import User
 
-
+# TODO: verificar campos
 class CompanyGroup(models.Model):
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     code = models.CharField(max_length=10, unique=True)
@@ -26,7 +25,7 @@ class CompanyGroup(models.Model):
         verbose_name = 'Grupo Empresarial'
         verbose_name_plural = 'Grupos Empresariais'
 
-
+# TODO: verificar campos
 class Company(models.Model):
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     code = models.CharField(max_length=10, unique=True)
@@ -52,7 +51,7 @@ class Company(models.Model):
         verbose_name = 'Empresa'
         verbose_name_plural = 'Empresas'
 
-
+# TODO: verificar campos
 class Department(models.Model):
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     code = models.CharField(max_length=10, unique=True)

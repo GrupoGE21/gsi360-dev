@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'apps.tenants',
     'apps.clients',
     'apps.partners',
+    'apps.employees',
 ]
 
 

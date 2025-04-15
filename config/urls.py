@@ -5,8 +5,8 @@ from apps.authentication.views import ProtectedView, CustomTokenObtainPairView
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 admin.site.site_header = "GSI360"
-admin.site_title = "GSI360"
-admin.index_title = "GSI360"
+admin.site.site_title = "GSI360"
+admin.site.index_title = "Administração"
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),

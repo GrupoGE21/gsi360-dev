@@ -2,7 +2,7 @@ import uuid
 from django.db import models
 from apps.core.utils import generate_incremental_code
 
-
+# TODO: verificar campos
 class Client(models.Model):
     PERSON_TYPE_CHOICES = (
         ('F', 'Pessoa Física'),
@@ -37,7 +37,7 @@ class Client(models.Model):
         verbose_name = 'Cliente'
         verbose_name_plural = 'Clientes'
 
-
+# TODO: verificar campos
 class ClientCNPJ(models.Model):
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     code = models.CharField('Código', max_length=10, unique=True)
@@ -74,7 +74,7 @@ class ClientCNPJ(models.Model):
         verbose_name = 'Cliente CNPJ'
         verbose_name_plural = 'Clientes CNPJ'
 
-
+# TODO: verificar campos
 class ClientProfessional(models.Model):
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     code = models.CharField('Código', max_length=10, unique=True)
