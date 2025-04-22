@@ -8,7 +8,7 @@ class Client(models.Model):
         ('F', 'Pessoa Física'),
         ('J', 'Pessoa Jurídica'),
     )
-    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     code = models.CharField('Código', max_length=10, unique=True)
     name = models.CharField('Nome', max_length=100)
     client_acronym = models.CharField('Sigla da empresa', max_length=20)
@@ -39,7 +39,7 @@ class Client(models.Model):
 
 # TODO: verificar campos
 class ClientCNPJ(models.Model):
-    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     code = models.CharField('Código', max_length=10, unique=True)
     client = models.ForeignKey('Client', on_delete=models.CASCADE, related_name="clients_cnpj")
     cnpj = models.CharField('CNPJ', max_length=14, unique=True)
@@ -76,7 +76,7 @@ class ClientCNPJ(models.Model):
 
 # TODO: verificar campos
 class ClientProfessional(models.Model):
-    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     code = models.CharField('Código', max_length=10, unique=True)
     name = models.CharField('Nome', max_length=100)
     client = models.ForeignKey('Client', on_delete=models.CASCADE, related_name="clients_professionals")

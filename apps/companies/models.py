@@ -5,7 +5,7 @@ from apps.users.models import User
 
 # TODO: verificar campos
 class CompanyGroup(models.Model):
-    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     code = models.CharField(max_length=10, unique=True)
     name = models.CharField(max_length=255, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -27,7 +27,7 @@ class CompanyGroup(models.Model):
 
 # TODO: verificar campos
 class Company(models.Model):
-    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     code = models.CharField(max_length=10, unique=True)
     group = models.ForeignKey(CompanyGroup, on_delete=models.CASCADE, related_name="companies")
     name = models.CharField(max_length=255)
@@ -53,7 +53,7 @@ class Company(models.Model):
 
 # TODO: verificar campos
 class Department(models.Model):
-    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     code = models.CharField(max_length=10, unique=True)
     name = models.CharField(max_length=255)
     company = models.ForeignKey(Company, on_delete=models.CASCADE)

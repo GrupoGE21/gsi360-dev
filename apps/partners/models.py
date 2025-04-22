@@ -4,7 +4,7 @@ from ..core.utils import generate_incremental_code
 
 # TODO: verificar campos
 class PartnerCompany(models.Model):
-    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     code = models.CharField('Código da empresa', max_length=10, unique=True)
     legal_name = models.CharField('Nome', max_length=250)
     cnpj = models.CharField('CNPJ', max_length=14, unique=True)

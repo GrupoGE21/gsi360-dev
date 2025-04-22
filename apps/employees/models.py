@@ -7,8 +7,7 @@ from apps.users.models import User
 
 # TODO: verificar campos
 class Candidate(models.Model):
-
-    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     company = models.ForeignKey(Company, on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Empresa')
     department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Departamento')
     full_name = models.CharField('Nome completo', max_length=200)
@@ -60,10 +59,10 @@ class Candidate(models.Model):
 
 # TODO: verificar campos
 class Employee(models.Model):
-    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     code = models.CharField('Matrícula', max_length=20, unique=True)
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=150)
+    first_name = models.CharField('Nome', max_length=100)
+    last_name = models.CharField('Sobrenome', max_length=150)
     user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
     email_personal = models.EmailField('E-mail pessoal', max_length=255, blank=True, null=True)
     birth_date = models.DateField('Data de nascimento', null=True, blank=True)
@@ -95,8 +94,8 @@ class Employee(models.Model):
     has_vacation = models.BooleanField('Tem férias?', default=True)
     leader = models.ForeignKey('self', on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Líder", related_name='team_members')
     employment_type = models.ForeignKey('core.EmploymentType', on_delete=models.SET_NULL, max_length=20, blank=True, null=True, verbose_name='Tipo de contratação', related_name='employees')
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField('Data de criação', auto_now_add=True)
+    updated_at = models.DateTimeField('Última atualização', auto_now=True)
 
     def save(self, *args, **kwargs):
         if not self.code:
@@ -118,9 +117,10 @@ class Employee(models.Model):
 
 # TODO: verificar campos
 class EmployeeCost(models.Model):
+    employee = models.OneToOneField(Employee, on_delete=models.CASCADE)
     cost_type = models.ForeignKey('core.EmployeeCostType', on_delete=models.SET_NULL, blank=True, null=True, verbose_name='Tipo de custo')
     description = models.TextField(verbose_name='Descrição')
-    is_active = models.BooleanField('Está ativo?', default=True)
+    initial_date = models.DateField('Data de início', blank=True, null=True)
     created_at = models.DateTimeField('Data de criação', auto_now_add=True)
     updated_at = models.DateTimeField('Última atualização', auto_now=True)
     created_by = models.ForeignKey('users.User', on_delete=models.SET_NULL, blank=True, null=True, related_name='employee_costs_created')
